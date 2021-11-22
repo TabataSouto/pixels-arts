@@ -1,7 +1,6 @@
-// CONSTANTES A SEREM UTILIZADAS NO DECORRER DO CÓDIGO //
+// Adicione à página um quadro de pixels, com 25 pixels.
 const pixelBoard = document.getElementById('pixel-board');
 
-// Adicione à página um quadro de pixels, com 25 pixels.
 const lines = 5;
 const coluns = 5;
 for (let index = 1; index <= lines; index += 1) {
@@ -13,3 +12,7 @@ for (let index = 1; index <= lines; index += 1) {
   }
   pixelBoard.appendChild(divLine);
 }
+
+// Defina a cor preta como cor inicial. Ao carregar a página;
+const firstColor = document.getElementById('color1');
+firstColor.classList.add('selected'); // adiciona nome de classe sem substituir a anterior, deixando a tag com a classe que já tinha mais as que forem adicionadas.
