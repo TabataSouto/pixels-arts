@@ -11,6 +11,7 @@ body {
   width: 100px;
   height: 100px;
   margin: 3px;
+  border-radius: 100%;
 }
 
 #color2 {
@@ -23,4 +24,13 @@ body {
 
 #color4 {
   background-color: #77a0a9;
+}
+
+/* PIXELS A SEREM COLORIDOS */
+.pixel {
+  display: inline-block;
+  background-color: white;
+  border: solid 1px black;
+  width: 40px;
+  height: 40px;
 }
