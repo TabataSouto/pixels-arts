@@ -7,13 +7,13 @@ for (let index = 1; index <= lines; index += 1) {
   for (let index2 = 1; index2 <= coluns; index2 += 1) {
     const box = document.createElement('div');
     box.className = 'pixel';
-    box.style.marginBottom = '-4px';
     divLine.appendChild(box);
   }
   pixelBoard.appendChild(divLine);
 }
 
 // DEFINBIR COR "BLACK" INICIAL  E CORES ALEATÓRIAS
+// Referencia para cores aleatórias: https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Math/random;
 function generateNewColor() {
   const aleatNum1 = Math.round(Math.random() * 255);
   const aleatNum2 = Math.round(Math.random() * 255);
@@ -22,14 +22,14 @@ function generateNewColor() {
   return newColorAleat;
 }
 
-const firstColor = document.querySelector('#color1');
+const firstColor = document.querySelectorAll('.color')[0];
 firstColor.classList.add('selected');
 firstColor.style.backgroundColor = 'black';
-const secondColor = document.querySelector('#color2');
+const secondColor = document.querySelectorAll('.color')[1];
 secondColor.style.backgroundColor = generateNewColor();
-const thirdColor = document.querySelector('#color3');
+const thirdColor = document.querySelectorAll('.color')[2];
 thirdColor.style.backgroundColor = generateNewColor();
-const fourthColor = document.querySelector('#color4');
+const fourthColor = document.querySelectorAll('.color')[3];
 fourthColor.style.backgroundColor = generateNewColor();
 
 // ADICIONAL: TITULO COM CORES ALEATORIAS (REQUISITO 6 E 12)
@@ -49,5 +49,14 @@ thirdColor.addEventListener('click', addColor);
 fourthColor.addEventListener('click', addColor);
 
 // COLORIR PIXEL'S
-const pixel = document.querySelector('.pixel');
-
+// percorrer todos os 25 pixels
+const pixelEvent = document.querySelectorAll('.pixel');
+for (let i = 0; i < pixelEvent.length; i += 1) {
+  pixelEvent[i].addEventListener('click', paintPixel);
+}
+// selecionar a cor para pintar o pixel
+function paintPixel(event) {
+  const colorSelected = document.querySelector('.selected');
+  let addColor = colorSelected.style.backgroundColor;
+  event.target.style.backgroundColor = addColor;
+}
