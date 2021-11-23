@@ -72,3 +72,6 @@ function clearPixels() {
 }
 
 clearBoard.addEventListener('click', clearPixels);
+
+// TAMANHO QUADRO PIXEL DEFINIDO PELO USUÁRIO;
+const boardSize = document.querySelector('#board-size');
