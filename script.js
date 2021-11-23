@@ -33,12 +33,8 @@ const fourthColor = document.querySelector('#color4');
 fourthColor.style.backgroundColor = generateNewColor();
 
 // ADICIONAL: TITULO COM CORES ALEATORIAS (REQUISITO 6 E 12)
-const span1 = document.querySelector('#c1');
-span1.style.color = generateNewColor();
-const span2 = document.querySelector('#c2');
-span2.style.color = generateNewColor();
-const span3 = document.querySelector('#c3');
-span3.style.color = generateNewColor();
+const myTitle = document.querySelector('#title');
+myTitle.style.color = generateNewColor();
 
 // SELECIONAR COR
 function addColor(event) {
@@ -53,3 +49,5 @@ thirdColor.addEventListener('click', addColor);
 fourthColor.addEventListener('click', addColor);
 
 // COLORIR PIXEL'S
+const pixel = document.querySelector('.pixel');
+
