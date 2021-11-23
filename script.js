@@ -33,14 +33,14 @@ const fourthColor = document.querySelectorAll('.color')[3];
 fourthColor.style.backgroundColor = generateNewColor();
 
 // ADICIONAL: TITULO COM CORES ALEATORIAS (REQUISITO 6 E 12)
-const myTitle = document.querySelector('#title');
-myTitle.style.color = generateNewColor();
+const myBody = document.querySelector('body');
+myBody.style.backgroundColor = generateNewColor();
 
 // SELECIONAR COR
 function addColor(event) {
   const colorElement = document.querySelector('.selected');
   colorElement.classList.remove('selected');
-  event.target.classList.add('selected');
+  event.target.classList.toggle('selected');
 }
 
 firstColor.addEventListener('click', addColor);
@@ -49,14 +49,26 @@ thirdColor.addEventListener('click', addColor);
 fourthColor.addEventListener('click', addColor);
 
 // COLORIR PIXEL'S
-// percorrer todos os 25 pixels
+// Função para selecionar a cor e pintar o pixel
+function paintPixel(e) {
+  const colorSelected = document.querySelector('.selected');
+  const addColorPixel = colorSelected.style.backgroundColor;
+  e.target.style.backgroundColor = addColorPixel;
+}
+// percorrer todos os 25 pixels para pintar
 const pixelEvent = document.querySelectorAll('.pixel');
 for (let i = 0; i < pixelEvent.length; i += 1) {
   pixelEvent[i].addEventListener('click', paintPixel);
 }
-// selecionar a cor para pintar o pixel
-function paintPixel(event) {
-  const colorSelected = document.querySelector('.selected');
-  let addColor = colorSelected.style.backgroundColor;
-  event.target.style.backgroundColor = addColor;
+
+// BOTÃO PARA LIMPAR PIXELS PREENCHIDOS
+const clearBoard = document.querySelector('#clear-board');
+// Criar um lopp para percorrer todos os 25 pixel e pintar de branco;
+// Referência do repositório do @SrTonn para entender a razão do lopp não funcionar anteriormente
+function clearPixels() {
+  for (let i = 0; i < pixelEvent.length; i += 1) {
+    pixelEvent[i].style.backgroundColor = 'white';
+  }
 }
+
+clearBoard.addEventListener('click', clearPixels);

@@ -3,6 +3,20 @@ body {
   text-align: center;
 }
 
+main {
+  margin: auto;
+  background-color: white;
+  width: 500px;
+  padding: 20px;
+  margin-top: 100px;
+  border-radius: 10px;
+}
+
+h1 {
+  color: rgb(97, 97, 97);
+  margin-top: auto;
+}
+
 /* ESTILOS PALETA DE CORES */
 .color {
   display: inline-block;
@@ -19,12 +33,12 @@ body {
   border: solid 1px black;
   width: 40px;
   height: 40px;
-  margin: 2px;
+  margin: -3px -1px;
 }
 
 /* ESTILO DO BOTÃO LIMPAR */
 #clear-board {
-  margin: 10px;
+  margin: 5px 0 15px;
   border-radius: 5px;
   border: double rgb(179, 176, 176);
 }
