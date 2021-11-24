@@ -1,16 +1,20 @@
 // ADICIONR PIXEL'S
 const pixelBoard = document.getElementById('pixel-board');
-const lines = 5;
-const coluns = 5;
-for (let index = 1; index <= lines; index += 1) {
-  const divLine = document.createElement('div');
-  for (let index2 = 1; index2 <= coluns; index2 += 1) {
-    const box = document.createElement('div');
-    box.className = 'pixel';
-    divLine.appendChild(box);
+
+function generatePixels(qtdPixel) {
+  const lines = qtdPixel;
+  const coluns = qtdPixel;
+  for (let index = 1; index <= lines; index += 1) {
+    const divLine = document.createElement('div');
+    for (let index2 = 1; index2 <= coluns; index2 += 1) {
+      const box = document.createElement('div');
+      box.className = 'pixel';
+      divLine.appendChild(box);
+    }
+    pixelBoard.appendChild(divLine);
   }
-  pixelBoard.appendChild(divLine);
 }
+generatePixels(5);
 
 // DEFINBIR COR "BLACK" INICIAL  E CORES ALEATÓRIAS
 // Referencia para cores aleatórias: https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Math/random;
@@ -50,7 +54,7 @@ fourthColor.addEventListener('click', addColor);
 
 // COLORIR PIXEL'S
 // Função para selecionar a cor e pintar o pixel
-function paintPixel(e) {
+function selectedPixel(e) {
   const colorSelected = document.querySelector('.selected');
   const addColorPixel = colorSelected.style.backgroundColor;
   e.target.style.backgroundColor = addColorPixel;
@@ -58,7 +62,7 @@ function paintPixel(e) {
 // percorrer todos os 25 pixels para pintar
 const pixelEvent = document.querySelectorAll('.pixel');
 for (let i = 0; i < pixelEvent.length; i += 1) {
-  pixelEvent[i].addEventListener('click', paintPixel);
+  pixelEvent[i].addEventListener('click', selectedPixel);
 }
 
 // BOTÃO PARA LIMPAR PIXELS PREENCHIDOS
@@ -74,4 +78,20 @@ function clearPixels() {
 clearBoard.addEventListener('click', clearPixels);
 
 // TAMANHO QUADRO PIXEL DEFINIDO PELO USUÁRIO;
-const boardSize = document.querySelector('#board-size');
+const button = document.querySelector('#generate-board');
+
+button.addEventListener('click', () => {
+  const input = document.querySelector('#board-size');
+  let inputValue = input.value;
+  if (inputValue === '') {
+    alert('Board inválido!');
+  }
+  if (inputValue < 5) {
+    inputValue = '5';
+  }
+  if (inputValue > 50) {
+    inputValue = '50';
+  }
+  pixelBoard.innerHTML = '';
+  generatePixels(inputValue);
+});
