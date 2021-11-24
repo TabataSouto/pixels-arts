@@ -94,4 +94,5 @@ button.addEventListener('click', () => {
   }
   pixelBoard.innerHTML = '';
   generatePixels(inputValue);
+  selectedPixel();
 });
