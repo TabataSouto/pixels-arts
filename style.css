@@ -13,7 +13,7 @@ main {
 }
 
 h1 {
-  color: rgb(97, 97, 97);
+  color: rgb(255, 255, 255);
   margin-top: auto;
 }
 
@@ -44,5 +44,11 @@ h1 {
 /* ESTILO BOTÕES INPUT E VQV */
 .style-button {
   border-radius: 5px;
-  border: double rgb(179, 176, 176);
+  border: double white;
+  color: white;
+}
+
+#title {
+  padding: 5px;
+  margin: 5 20px;
 }

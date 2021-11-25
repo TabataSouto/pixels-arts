@@ -2,11 +2,9 @@
 const pixelBoard = document.getElementById('pixel-board');
 
 function generatePixels(qtdPixel) {
-  const lines = qtdPixel;
-  const coluns = qtdPixel;
-  for (let index = 1; index <= lines; index += 1) {
+  for (let index = 1; index <= qtdPixel; index += 1) {
     const divLine = document.createElement('div');
-    for (let index2 = 1; index2 <= coluns; index2 += 1) {
+    for (let index2 = 1; index2 <= qtdPixel; index2 += 1) {
       const box = document.createElement('div');
       box.className = 'pixel';
       divLine.appendChild(box);
@@ -36,9 +34,18 @@ thirdColor.style.backgroundColor = generateNewColor();
 const fourthColor = document.querySelectorAll('.color')[3];
 fourthColor.style.backgroundColor = generateNewColor();
 
-// ADICIONAL: TITULO COM CORES ALEATORIAS (REQUISITO 6 E 12)
+// ADICIONAL: bg e titulo mudando de cores aleatoriamente;
 const myBody = document.querySelector('body');
 myBody.style.backgroundColor = generateNewColor();
+
+const title = document.querySelector('#title');
+const colorBg = myBody.style.backgroundColor;
+title.style.backgroundColor = colorBg;
+
+const borderButton = document.querySelectorAll('.style-button');
+borderButton[0].style.backgroundColor = colorBg;
+borderButton[1].style.backgroundColor = colorBg;
+borderButton[2].style.backgroundColor = colorBg;
 
 // SELECIONAR COR
 function addColor(event) {
@@ -53,23 +60,27 @@ thirdColor.addEventListener('click', addColor);
 fourthColor.addEventListener('click', addColor);
 
 // COLORIR PIXEL'S
-// Função para selecionar a cor e pintar o pixel
+// Função para selecionar a cor com classe selected
 function selectedPixel(e) {
   const colorSelected = document.querySelector('.selected');
   const addColorPixel = colorSelected.style.backgroundColor;
   e.target.style.backgroundColor = addColorPixel;
 }
-// percorrer todos os 25 pixels para pintar
-const pixelEvent = document.querySelectorAll('.pixel');
-for (let i = 0; i < pixelEvent.length; i += 1) {
-  pixelEvent[i].addEventListener('click', selectedPixel);
+// percorrer todos os pixels para pintar o que for clicado
+function paintPixels() {
+  const pixelEvent = document.querySelectorAll('.pixel');
+  for (let i = 0; i < pixelEvent.length; i += 1) {
+    pixelEvent[i].addEventListener('click', selectedPixel);
+  }
 }
+paintPixels();
 
 // BOTÃO PARA LIMPAR PIXELS PREENCHIDOS
 const clearBoard = document.querySelector('#clear-board');
 // Criar um lopp para percorrer todos os 25 pixel e pintar de branco;
 // Referência do repositório do @SrTonn para entender a razão do lopp não funcionar anteriormente
 function clearPixels() {
+  const pixelEvent = document.querySelectorAll('.pixel');
   for (let i = 0; i < pixelEvent.length; i += 1) {
     pixelEvent[i].style.backgroundColor = 'white';
   }
@@ -94,4 +105,5 @@ button.addEventListener('click', () => {
   }
   pixelBoard.innerHTML = '';
   generatePixels(inputValue);
+  paintPixels();
 });
